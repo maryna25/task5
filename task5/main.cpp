@@ -17,9 +17,9 @@ public:
 class test1
 {
 public:
-	void operator delete (void* ptr)
+	~test1()
 	{
-		throw std::exception("testik");
+		throw std::exception();
 	}
 };
 
@@ -55,8 +55,7 @@ TEST_CASE("Checking pop()")
 		s.pop();
 		REQUIRE(s.top()==i-1);
 	}
-	Stack<test1> s1;
-	REQUIRE_THROWS(s1.pop());
+	
 }
 
 int main(int argc, char* argv[])
